@@ -1,4 +1,5 @@
 BEGIN {
+    MAX = 1000
     for (i = 0; i < MAX; i++) {
 	prod[i] = 0
 	cons[i] = 0
@@ -17,12 +18,13 @@ BEGIN {
 
 END {
 	count=0;
+	printf("MAX = %d\n",MAX);
 	for (i = 0; i < MAX; i++) {
 		if (prod[i] == 1 && cons[i] == 1) {
 			count++;
 		}
 		else {
-#			printf("%d\t%d\t%d\n", i, prod[i], cons[i]);	
+			printf("%d\t%d\t%d\n", i, prod[i], cons[i]);	
 		}
 	}
 	if (count == MAX) {
