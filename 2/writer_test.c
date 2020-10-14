@@ -21,8 +21,8 @@ void *Reader(void* arg)
 	indx++;
 	pthread_spin_unlock(&spinlock);
 
-	// printf("Reader: %d has acquired the lock\n", threadNUmber);
-	usleep(100000);
+	 //printf("Reader: %d has acquired the lock\n", threadNUmber);
+	usleep(10000);
 
 	pthread_spin_lock(&spinlock);
 	readerReleaseTime[threadNUmber] = indx;
@@ -31,7 +31,7 @@ void *Reader(void* arg)
 
 	// Releasing the Lock
 	r_unlock(&rwlock);
-	// printf("Reader: %d has released the lock\n",threadNUmber);
+	 //printf("Reader: %d has released the lock\n",threadNUmber);
 }
 
 void *Writer(void* arg)
@@ -46,8 +46,8 @@ void *Writer(void* arg)
 	indx++;
 	pthread_spin_unlock(&spinlock);
 
-	// printf("Writer: %d has acquired the lock\n",threadNUmber);
-  usleep(100000);
+	 //printf("Writer: %d has acquired the lock\n",threadNUmber);
+  usleep(10000);
 
 	pthread_spin_lock(&spinlock);
 	writerReleaseTime[threadNUmber] = indx;
@@ -56,7 +56,7 @@ void *Writer(void* arg)
 
 	// Releasing the Lock
 	w_unlock(&rwlock);
-	// printf("Writer: %d has released the lock\n",threadNUmber);
+	 //printf("Writer: %d has released the lock\n",threadNUmber);
 }
 
 int main(int argc, char *argv[])
@@ -182,6 +182,7 @@ int main(int argc, char *argv[])
 	// }
 
 	// check if no reader is holding while a writer is still holding lock
+	//printf("min_reader_acquire_time : %ld, max_writer_release_time : %ld\n",*min_reader_acquire_time_second_half , *max_writer_release_time);
 	if ((read_num_threads > 0) && (write_num_threads > 0) && (*min_reader_acquire_time_second_half < *max_writer_release_time)){
 		printf("Reader can not acquire lock when writer is holding a lock\n");
 		exit(0);

@@ -3,9 +3,15 @@
 #include <pthread.h>
 #include <unistd.h>
 
+#define UNUSED 0
+#define READ 1
+#define WRITE 2
 struct rw_lock
 {
-
+	int mode;
+	int reader_num;
+	int wait_writer;
+	pthread_mutex_t ref_mode;
 };
 
 void init_rwlock(struct rw_lock * rw);
