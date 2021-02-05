@@ -1,5 +1,5 @@
 # OperatingSystem_Project4
-## 개요
+## 개발 
 - 다중 쓰레드 프로그래밍의 기본 개념을 이해
 - lock 및 조건 변수를 사용하는 쓰레드(pthread) 프로그램 구현
 
